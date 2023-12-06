@@ -1,0 +1,54 @@
+<template>
+    <lightning-card title="Check box Component">
+
+        <lightning-combobox label="Technology" value={value} placeholder="Select Technology" options={options}
+            onchange={handleChange}></lightning-combobox>
+        <p>Selected value is: {value}</p>
+
+        <template if:true={showSalesforceStack}>
+
+            <!-- Below code is for lightning input search box which will filter picklist result based on inputs given by user -->
+            <lightning-input type="search" label="Search Objects" onchange={handleSearch} value={searchTerm}
+                placeholder={itemcounts}></lightning-input>
+
+            <div class="slds-col slds-large-size_10-of-12 slds-medium-size_1-of-12 slds-size_1-of-12">
+                <a href="javascript.void(0)" onclick={selectall}>Select All</a>
+            </div>
+            <div class="slds-float_right">
+                <a href="javascript.void(0)" onclick={handleclearall}>Clear All</a>
+            </div>
+
+            <!-- Below code will show dropdown picklist -->
+            <!-- <template if:true={showDropdown}>
+				<div class="slds-box_border " style="width:100%"> -->
+            <ul class="dropdown-list slds-dropdown_length-7 slds-p-left_medium">
+                <template for:each={filteredResults} for:item="profile">
+                    <li key={profile.Id} class="dropdown-item">
+                        <lightning-input type="checkbox" checked={profile.isChecked} label={profile.Name}
+                            value={profile.Id} onchange={handleSelection}>
+                        </lightning-input>
+                    </li>
+                </template>
+            </ul>
+            <!-- </div>
+			</template> -->
+
+            <!-- Below code will show selected options from picklist in pills -->
+            <div class="selection-summary">
+                <div class="slds-p-around_x-small">
+                    <template for:each={selectedItems} for:item="selectedItem">
+                        <lightning-pill key={selectedItem.Id} label={selectedItem.Name} name={selectedItem.Id}
+                            onremove={handleRemove}></lightning-pill>
+                    </template>
+                </div>
+            </div>
+        </template>
+        <template if:true={showOracleStack}>
+            <p>Selected value is: Oracle</p>
+        </template>
+        <template if:true={showSAPStack}>
+            <p>Selected value is: SAP</p>
+        </template>
+
+    </lightning-card>
+</template>

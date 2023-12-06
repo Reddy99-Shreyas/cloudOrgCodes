@@ -1,0 +1,107 @@
+<template>
+    <lightning-card title="Resource Object">
+        <!-- Account lookup as picklist -->
+        <lightning-combobox label="Account" placeholder="-Select Account-" options={accountOptions} onchange={handleAccountChange} value={getResource.Account__c}></lightning-combobox>
+
+        <!-- Opportunity lookup as picklist -->
+        <lightning-combobox label="Opportunity" placeholder="-Select Opportunity-" options={oppOptions} onchange={handleOppChange} value={getResource.Opportunity__c}></lightning-combobox>
+
+        <!-- Name -->
+        <lightning-input label="Resource Name" type="text" onchange={handleResourceName}></lightning-input>
+        <!-- Requester Name -->
+        <lightning-input label="Requester Name" type="text" onchange={handleRequesterName}></lightning-input>
+        <!-- Recruiter Name -->
+        <lightning-input label="Recruiter Name" type="text" onchange={handleRecruiterName}></lightning-input>
+        <!-- Employee Name (Replacement) -->
+        <lightning-input label="Employee Name (Replacement)" type="text" onchange={handleEmpName}></lightning-input>
+        <!-- Project Name -->
+        <lightning-input label="Project Name" type="text" onchange={handleProjectName}></lightning-input>
+        <!-- Recruitment Start Date -->
+        <lightning-input label="Recruitment Start Date" type="Date" onchange={handleRecStartDate}></lightning-input>
+        <!-- Onboarding Date -->
+        <lightning-input label="Onboarding Date" type="Date" onchange={handleOnbDate}></lightning-input>
+        <!-- Comments -->
+        <lightning-textarea label="Comments" onchange={handleComments}></lightning-textarea>
+        <!-- Positions -->
+        <lightning-input label="Positions" type="Number" onchange={handlePositions}></lightning-input>
+        <!-- Billing Rate -->
+        <lightning-input label="Billing Rate" type="Number" onchange={handleBillRate}></lightning-input>
+        <!-- Currency -->
+        <lightning-input label="Currency" type="Number" onchange={handleCurrency}></lightning-input>
+
+        <!-- Client_Interview_Required__c -->
+        <template if:true={resClientInterReq.data}>
+            <lightning-combobox label="Client Interview Required" options={resClientInterReq.data.values}
+                placeholder="-Select-" onchange={handleCir}></lightning-combobox>
+        </template>
+        <!-- Department -->
+        <template if:true={resDepartment.data}>
+            <lightning-combobox label="Department" options={resDepartment.data.values} placeholder="-Select-"
+                onchange={handleDept}></lightning-combobox>
+        </template>
+        <!-- Location -->
+        <template if:true={resLocation.data}>
+            <lightning-combobox label="Location" options={resLocation.data.values} placeholder="-Select-"
+                onchange={handleLocation}></lightning-combobox>
+        </template>
+        <!-- Type -->
+        <template if:true={resType.data}>
+            <lightning-combobox label="Type" options={resType.data.values} placeholder="-Select-"
+                onchange={handleType}></lightning-combobox>
+        </template>
+        <!-- Employment Type -->
+        <template if:true={resEmpType.data}>
+            <lightning-combobox label="Employment Type" options={resEmpType.data.values} placeholder="-Select-"
+                onchange={handleEmpType}></lightning-combobox>
+        </template>
+        <!-- Job Location -->
+        <template if:true={resJobLoc.data}>
+            <lightning-combobox label="Job Location" options={resJobLoc.data.values} placeholder="-Select-"
+                onchange={handleJobLoc}></lightning-combobox>
+        </template>
+        <!-- Client Name -->
+        <template if:true={resClientName.data}>
+            <lightning-combobox label="Client Name" options={resClientName.data.values} placeholder="-Select-"
+                onchange={handleClientName}></lightning-combobox>
+        </template>
+        <!-- Expertise Area -->
+        <template if:true={resExpArea.data}>
+            <lightning-combobox label="Expertise Area" options={resExpArea.data.values} placeholder="-Select-"
+                onchange={handleExpArea}></lightning-combobox>
+        </template>
+        <!-- Onsite Interview Required -->
+        <template if:true={resOnsiteInterReq.data}>
+            <lightning-combobox label="Onsite Interview Required" options={resOnsiteInterReq.data.values}
+                placeholder="-Select-" onchange={handleOnIntReq}></lightning-combobox>
+        </template>
+        <!-- Level & Grade -->
+        <template if:true={resLevelGrade.data}>
+            <lightning-combobox label="Level & Grade" options={resLevelGrade.data.values} placeholder="-Select-"
+                onchange={handleLevGr}></lightning-combobox>
+        </template>
+        <!-- Priority -->
+        <template if:true={resPriority.data}>
+            <lightning-combobox label="Priority" options={resPriority.data.values} placeholder="-Select-"
+                onchange={handlePriority}></lightning-combobox>
+        </template>
+        <!-- Title -->
+        <template if:true={resTitle.data}>
+            <lightning-combobox label="Title" options={resTitle.data.values} placeholder="-Select-"
+                onchange={handleTitle}></lightning-combobox>
+        </template>
+        <!-- Billability -->
+        <template if:true={resBillability.data}>
+            <lightning-combobox label="Billability" options={resBillability.data.values} placeholder="-Select-"
+                onchange={handleBillability}></lightning-combobox>
+        </template>
+        <!-- Shift Timings -->
+        <template if:true={resShiftTimings.data}>
+            <lightning-combobox label="Shift Timings" options={resShiftTimings.data.values} placeholder="-Select-"
+                onchange={handleShiftTiming}></lightning-combobox>
+        </template>
+
+        <lightning-button icon-name="utility:save" variant="success" label="Save"
+            onclick={handleSaveClick}></lightning-button>
+
+    </lightning-card>
+</template>

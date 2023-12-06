@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <div class="slds slds-p-around--medium">
+            <div class="slds-p-horizontal_small">
+                <template for:each={labelItems} for:item="pillItem" for:index="index">
+                    <lightning-pill label={pillItem.label} onremove={removePillItem} key={pillItem.label} name={index}>
+                    </lightning-pill>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>
