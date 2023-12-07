@@ -60,7 +60,7 @@ export default class DynamicCheckboxCmp extends LightningElement {
         const itempill = this.selectedSkillValue;
         itempill.splice(pillIndex, 1);
         this.selectedSkillValue = [...itempill];
-        console.log('Click From LightningPill :=> '+JSON.stringify(this.selectedSkillValue));
+        console.log('Click From Lightning Pill :=> '+JSON.stringify(this.selectedSkillValue));
     }
 
     selectAll() {
