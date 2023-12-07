@@ -1,35 +1,54 @@
 <template>
-    <lightning-card title="CheckBox Component">
-        <div class="slds-m-left_large slds-m-right_large">
+    <lightning-card title="Demo Checkbox Component">
 
-            <lightning-combobox placeholder="Select Technology" label="Technology" options={technologyOptions}
-                onchange={handleTechnologyChange}>
-            </lightning-combobox>
+        <lightning-combobox label="Technology" value={value} placeholder="Select Technology" options={options}
+            onchange={handleChange}></lightning-combobox>
+        <p>Selected value is: {value}</p>
 
-            <template if:true={showTechnicalStack}>
-                <div class="container slds-p-around_small">
-                    <lightning-checkbox-group label="Technical Stack" options={technicalStackOptions}
-                        value={selectedTechnicalStack} onchange={handleTechnicalStackChange}>
-                    </lightning-checkbox-group>
+        <template if:true={showSalesforceStack}>
+
+            <!-- Below code is for lightning input search box which will filter picklist result based on inputs given by user -->
+            <lightning-input type="search" label="Search Objects" onchange={handleSearch} value={searchTerm}
+                placeholder={itemcounts}></lightning-input>
+
+            <div class="slds-col slds-large-size_10-of-12 slds-medium-size_1-of-12 slds-size_1-of-12">
+                <a href="javascript.void(0)" onclick={selectall}>Select All</a>
+            </div>
+            <div class="slds-float_right">
+                <a href="javascript.void(0)" onclick={handleclearall}>Clear All</a>
+            </div>
+
+            <!-- Below code will show dropdown picklist -->
+            <!-- <template if:true={showDropdown}>
+				<div class="slds-box_border " style="width:100%"> -->
+            <ul class="dropdown-list slds-dropdown_length-7 slds-p-left_medium">
+                <template for:each={filteredResults} for:item="profile">
+                    <li key={profile.Id} class="dropdown-item">
+                        <lightning-input type="checkbox" checked={profile.isChecked} label={profile.Name}
+                            value={profile.Id} onchange={handleSelection}>
+                        </lightning-input>
+                    </li>
+                </template>
+            </ul>
+            <!-- </div>
+			</template> -->
+
+            <!-- Below code will show selected options from picklist in pills -->
+            <div class="selection-summary">
+                <div class="slds-p-around_x-small">
+                    <template for:each={selectedItems} for:item="selectedItem">
+                        <lightning-pill key={selectedItem.Id} label={selectedItem.Name} name={selectedItem.Id}
+                            onremove={handleRemove}></lightning-pill>
+                    </template>
                 </div>
+            </div>
+        </template>
+        <template if:true={showOracleStack}>
+            <p>Selected value is: Oracle</p>
+        </template>
+        <template if:true={showSAPStack}>
+            <p>Selected value is: SAP</p>
+        </template>
 
-                <div class="slds-grid slds-gutters">
-                    <!-- Select All Button -->
-                    <div class="slds-col">
-                        <button class="slds-button" onclick={selectAll}>Select All</button>
-                    </div>
-                    <!-- Clear All Button -->
-                    <div class="slds-col slds-text-align_right">
-                        <button class="slds-button" onclick={clearAll}>Clear All</button>
-                    </div>
-                </div>
-                <!-- <p>{selectedValues}</p> -->
-            </template>
-
-            <template for:each={selectedTechnicalStack} for:item="selectedItem" for:index="index">
-                <lightning-pill style="margin-right:10px" key={selectedItem} label={selectedItem} onremove={handlePillRemove} name={index}></lightning-pill>
-            </template>
-
-        </div>
     </lightning-card>
 </template>
