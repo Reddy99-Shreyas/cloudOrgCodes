@@ -18,7 +18,7 @@ export default class DynamicCheckboxCmp extends LightningElement {
                 };
             });
         } else if (error) {
-            console.log("Technology Error: " + JSON.stringify(error));
+            console.log("Error: " + JSON.stringify(error));
         }
     }
 
@@ -44,7 +44,7 @@ export default class DynamicCheckboxCmp extends LightningElement {
             });
             //console.log(JSON.stringify(data));
         } else if (error) {
-            console.log('Stack Error :=> '+JSON.stringify(error));
+            console.log(error);
         }
     }
 
