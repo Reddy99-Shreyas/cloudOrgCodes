@@ -1,7 +1,6 @@
 import { LightningElement, track } from 'lwc';
 
-
-export default class LookUpCmp extends LightningElement {
+export default class TrailDemoCmp extends LightningElement {
     @track labelItems = [
         {
             label: 'Salesforce LWC'
@@ -26,5 +25,4 @@ export default class LookUpCmp extends LightningElement {
         this.labelItems = [...itempill];
         console.log(pillIndex, this.labelItems);
     }
-
 }
