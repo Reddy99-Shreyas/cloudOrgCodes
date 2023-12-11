@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Technology skills Input Component">
+        <div class="slds-m-left_large slds-m-right_large">
+
+            <lightning-combobox label="Technology" placeholder="-Select Technology-" options={techOptions}
+                onchange={handleTechChange} value={selectedTechValue}></lightning-combobox>
+            <!-- <p>Selected Value - {selectedTechValue}</p> -->
+
+            <template if:true={showTechnicalStack}>
+                <template for:each={skills} for:item="skill" for:index="index">
+                    <div key={skill.key}>
+                        <lightning-input type="text" label="Skill" placeholder="Enter your skill"
+                            onchange={handleSkillChange} value={skill.value} data-index={index}></lightning-input>
+
+                        <lightning-button icon-name="utility:delete" label="Delete" variant="destructive" title="Delete" onclick={handleDeleteClick} data-index={index}></lightning-button>
+                    </div>
+                </template>
+
+                <lightning-button icon-name="utility:add" variant="brand" label="Add More"
+                    onclick={handleAddMoreClick}></lightning-button>
+
+            </template>
+
+            <!-- <div>
+                <p>Collected Values: {dataValues}</p>
+            </div> -->
+
+        </div>
+    </lightning-card>
+</template>
