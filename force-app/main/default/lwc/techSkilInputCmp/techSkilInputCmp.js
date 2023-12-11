@@ -22,7 +22,7 @@ export default class TechSkilInputCmp extends LightningElement {
     }
 
     @track selectedTechValue = '';
-    handleTechChange(event){
+    handleTechChange(event) {
         this.selectedTechValue = event.detail.value;
         // console.log('Picklist Value Id :=> ' + this.selectedTechValue);
         this.showTechnicalStack = this.selectedTechValue;

@@ -8,16 +8,19 @@
 
             <template if:true={showTechnicalStack}>
                 <template for:each={skills} for:item="skill" for:index="index">
-                    <div key={skill.key}>
-                        <lightning-input type="text" label="Skill" placeholder="Enter your skill"
-                            onchange={handleSkillChange} value={skill.value} data-index={index}></lightning-input>
-
-                        <lightning-button icon-name="utility:delete" label="Delete" variant="destructive" title="Delete" onclick={handleDeleteClick} data-index={index}></lightning-button>
+                    <div key={skill.key} class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <lightning-input type="text" label="Skill" placeholder="Enter your skill"
+                                onchange={handleSkillChange} value={skill.value} data-index={index}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-12 slds-align_absolute-center">
+                            <lightning-icon icon-name="action:delete" title="Delete" onclick={handleDeleteClick}
+                                data-index={index}></lightning-icon>
+                        </div>
                     </div>
                 </template>
 
-                <lightning-button icon-name="utility:add" variant="brand" label="Add More"
-                    onclick={handleAddMoreClick}></lightning-button>
+                <lightning-icon icon-name="action:new" title="Add more" onclick={handleAddMoreClick}></lightning-icon>
 
             </template>
 
